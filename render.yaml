@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: ai-photo-glow-qwen-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: DASHSCOPE_API_KEY
+        sync: false
+      - key: QWEN_MODEL
+        value: qwen-vl-plus
+      - key: DASHSCOPE_BASE_URL
+        value: https://dashscope.aliyuncs.com/compatible-mode/v1
+      - key: FRONTEND_ORIGIN
+        sync: false
+
+  - type: web
+    name: ai-photo-glow-web
+    runtime: static
+    rootDir: frontend
+    buildCommand: ""
+    staticPublishPath: .
