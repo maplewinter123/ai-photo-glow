@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: ai-photo-glow-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-5
+      - key: FRONTEND_ORIGIN
+        sync: false
+
+  - type: web
+    name: ai-photo-glow-web
+    runtime: static
+    rootDir: frontend
+    buildCommand: ""
+    staticPublishPath: .
